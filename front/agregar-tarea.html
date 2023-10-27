@@ -47,7 +47,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/agregar-tarea.html">Agregar</a>
+                        <a class="nav-link active" href="/agregar-tarea.html">Agregar</a>
                     </li>
                 </ul>
 
@@ -76,85 +76,67 @@
         </div>
     </nav>
 
-    
-    <!-- seccion producto -->
-    <section class="mt-5 position-relative" >
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-12 col-md-6">
-                    <img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt=""
-                        id="producto-imagen">
+    <main  class="mt-5 d-flex flex-column gap-5" style="min-height: calc(100vh - 10rem);" ">
+        <section class="container row m-auto d-flex align-items-center justify-content-center pt-3">
+            <form class="col-12 col-md-6 d-flex flex-column gap-3" id="form">
+                <div class="form-group">
+                    <label for="titulo">Título</label>
+                    <input type="text" class="form-control" id="titulo" placeholder="Ingresa el título">
                 </div>
-                <div class=" col-12 col-md-6">
-                    <h1 id="producto-titulo" class="display-5 fw-bolder">TITULO</h1>
-                    <div class="f5-5 mb-5">
-                        <span id="producto-tiempo"></span>
-                        <p id="producto-descripcion" class="lead">Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit.
-                            Voluptates, veniam voluptatum amet, id perspiciatis quidem optio pariatur asperiores minima
-                            velit iusto
-                            cumque modi officia sint quae temporibus unde! Assumenda, quaerat.</p>
-                        <p class="lead" id="producto-responsable"></p>
-                        <br>
-                        <div class="d-flex align-items-center gap-1">
-                            <div>
-                                <select id="estado" name="estado" class="form-select">
-                                    <option selected value="">Estado</option>
-                                    <option value="PORHACER">Por hacer</option>
-                                    <option value="ENPRODUCCION">En producción</option>
-                                    <option value="PORTESTEAR">Por testear</option>
-                                    <option value="COMPLETADA">Completada</option>
-                                </select>
-                            </div>
-                            <button class="btn btn-primary d-flex gap-1"  id="update-button">
-                                <span class="d-none d-md-block">Cambiar Estado</span>
-                                <i class="bi bi-arrow-left-right"></i>
-                            </button>
-                            <button class="btn btn-outline-danger" type="button" id="delete-button">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea class="form-control" id="descripcion" rows="3"></textarea>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="form-group">
+                    <label for="tiempo">Tiempo (en días)</label>  
+                    <input type="number" class="form-control" id="tiempo" placeholder="Ej. 90">
+                </div>
+                <div class="form-group">
+                    <label for="imagen">URL Imagen</label>
+                    <input type="text" class="form-control" id="imagen" placeholder="Ingresa URL de la imagen">
+                </div>
+                <div class="form-group">
+                    <label for="responsable">Responsable</label>
+                    <input type="text" class="form-control" id="responsable">
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select class="form-control" id="estado">
+                        <option selected value="">Estado</option>
+                        <option value="PORHACER">Por hacer</option>
+                        <option value="ENPRODUCCION">En producción</option>
+                        <option value="PORTESTEAR">Por testear</option>
+                        <option value="COMPLETADA">Completada</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </section>
+    </main>
 
     <!-- TOAST -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div class="toast" id="successToast" role="alert">
             <div class="toast-header">
-                <strong class="me-auto">Cambio de estado</strong>
+                <strong class="me-auto">Agregar tarea</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
             </div>
             <div class="toast-body bg-success-subtle">
-                Se modificó correctamente el estado
+                Se agregó correctamente la tarea
             </div>
         </div>
     </div>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div class="toast" id="errorToast" role="alert">
             <div class="toast-header">
-                <strong class="me-auto">Cambio de estado</strong>
+                <strong class="me-auto">Agregar tarea</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
             </div>
             <div class="toast-body bg-danger-subtle">
-                Por favor agrega un estado para poder modificarlo.
+                Por favor rellena todos los campos.
             </div>
         </div>
     </div>
-
-
-    <!-- productos relacionados -->
-    <section class="py-5 bg-light">
-        <div class="container-fluid px-4 px-lg-5 mt-5">
-            <h2 class="fw-bolder mb-4">Productos Relacionados</h2>
-            <div id="productos-relacionados"
-                class="row row-cols-1 row-cols-md-2 row-cols-xl-4 justify-content-center g-4">
-                <!-- Aqui se renderizan los productos -->
-            </div>
-        </div>
-    </section>
 
 
     <div class="container">
@@ -177,7 +159,7 @@
         crossorigin="anonymous"></script>
     <!-- JAVASCRIPT -->
 
-    <script type="module" src="libs/pages/detalle.js"></script>
+    <script type="module" src="libs/pages/agregar-tarea.js"></script>
 
 </body>
 
