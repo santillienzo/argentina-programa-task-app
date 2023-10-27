@@ -1,13 +1,18 @@
-import { getOneProduct, getProductInCategory } from "../services/products.js";
+import { deleteProduct, getOneProduct, getProductInCategory, updateStateProduct } from "../services/products.js";
 
 const id = new URLSearchParams(window.location.search).get("id");
 //inicializar elementos
 
-const producto_imagen = document.getElementById("producto-imagen");
-const producto_titulo = document.getElementById("producto-titulo");
-const producto_tiempo = document.getElementById("producto-tiempo");
-const producto_descrtipcion = document.getElementById("producto-descripcion");
-const producto_responsable = document.getElementById("producto-responsable")
+const productoImagen = document.getElementById("producto-imagen");
+const productoTitulo = document.getElementById("producto-titulo");
+const productoTiempo = document.getElementById("producto-tiempo");
+const productoDescripcion = document.getElementById("producto-descripcion");
+const productoResponsable = document.getElementById("producto-responsable")
+const btnDelete = document.getElementById("delete-button")
+const btnUpdateState = document.getElementById("update-button")
+const estadoSelect = document.getElementById("estado")
+//TOAST
+const _successToast = document.getElementById('successToast')
 
 
 const  productosRelacionadosContainer = document.getElementById("productos-relacionados");
@@ -47,16 +52,36 @@ const fillProductosRelacionados = async (category) => {
 const fillProduct = async () => {
     const producto = await getOneProduct(id);
     if(producto){
-        producto_imagen.src = producto.imagen;
-        producto_titulo.textContent = producto.titulo;
-        producto_tiempo.textContent = "Tiempo: "+producto.tiempo;
-        producto_descrtipcion.textContent = producto.descripcion;
-        producto_responsable.textContent = "Responable: " + producto.responsable;
+        productoImagen.src = producto.imagen;
+        productoTitulo.textContent = producto.titulo;
+        productoTiempo.textContent = "Tiempo: "+producto.tiempo;
+        productoDescripcion.textContent = producto.descripcion;
+        productoResponsable.textContent = "Responable: " + producto.responsable;
+        estadoSelect.value = producto.estado
         
-        console.log(producto)
         fillProductosRelacionados(producto.estado);
 
    }
 }
+
+btnDelete.addEventListener('click',async ()=>{
+  const product = await deleteProduct(id)
+
+  
+  if (product) {
+    location.href = "/"
+  }
+
+})
+
+btnUpdateState.addEventListener('click',async (e)=>{
+  e.preventDefault()
+  const successToast = bootstrap.Toast.getOrCreateInstance(_successToast)
+
+  const res = await updateStateProduct(id, estadoSelect.value)
+
+  successToast.show()
+})
+
 
 fillProduct();
