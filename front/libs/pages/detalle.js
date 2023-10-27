@@ -13,6 +13,7 @@ const btnUpdateState = document.getElementById("update-button")
 const estadoSelect = document.getElementById("estado")
 //TOAST
 const _successToast = document.getElementById('successToast')
+const _errorToast = document.getElementById('errorToast')
 
 
 const  productosRelacionadosContainer = document.getElementById("productos-relacionados");
@@ -78,10 +79,21 @@ btnDelete.addEventListener('click',async (e)=>{
 btnUpdateState.addEventListener('click',async (e)=>{
   e.preventDefault()
   const successToast = bootstrap.Toast.getOrCreateInstance(_successToast)
+  const errorToast = bootstrap.Toast.getOrCreateInstance(_errorToast)
 
-  const res = await updateStateProduct(id, estadoSelect.value)
+  const estado = estadoSelect.value
 
-  successToast.show()
+
+  if (estado !== '') {
+  
+    const res = await updateStateProduct(id, estado)
+  
+    successToast.show()
+    return
+  }
+  
+  
+  errorToast.show()
 })
 
 
