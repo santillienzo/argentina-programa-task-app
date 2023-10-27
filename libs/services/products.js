@@ -41,3 +41,31 @@ export function updateStateProduct(id, newState){
     })
     .catch(error=> error)
 }
+
+//Usamos PATCH para actualizar solo un campo
+export function addProduct({
+    titulo,
+    descripcion,
+    tiempo,
+    imagen,
+    responsable,
+    estado
+}){
+    return fetch(`http://localhost:3000/tasks/`,{
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            titulo,
+            descripcion,
+            tiempo,
+            imagen,
+            responsable,
+            estado
+        })
+    })
+    .then(res=>res.json())
+    .then(json=>json)
+    .catch(error=> error)
+}
