@@ -30,14 +30,14 @@ export function updateStateProduct(id, newState){
         method: 'PATCH',
         headers: {
             "Content-Type": "application/json",
-            "Accept": "/"
         },
         body: JSON.stringify({
             estado: newState
         })
     })
-    .then(res=>{
-        return res.json()
+    .then(res=>res.json())
+    .then(json=>{
+        return json
     })
     .catch(error=> error)
 }

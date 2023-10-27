@@ -64,7 +64,8 @@ const fillProduct = async () => {
    }
 }
 
-btnDelete.addEventListener('click',async ()=>{
+btnDelete.addEventListener('click',async (e)=>{
+  e.preventDefault()
   const product = await deleteProduct(id)
 
   
