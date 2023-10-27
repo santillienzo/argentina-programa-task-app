@@ -17,8 +17,14 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
         <div class="container-fluid">
-            <!--ICON-->
-            <a class="navbar-brand" href="/">Desarrollo en Argentina</a>
+            <!-- BACK ICON -->
+            <div class="d-flex align-items-center gap-1">
+                <a href="/" class="d-flex align-items-center  justify-content-center border rounded-circle" style="top: 25px; left: 25px; height: 25px; width: 25px;">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+                <!--ICON-->
+                <a class="navbar-brand" href="/">Desarrollo en Argentina</a>
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -70,9 +76,6 @@
     
     <!-- seccion producto -->
     <section class="mt-5 position-relative" >
-        <a href="/" class="position-absolute d-flex align-items-center  justify-content-center border rounded-circle" style="top: 25px; left: 25px; height: 25px; width: 25px;">
-            <i class="bi bi-chevron-left"></i>
-        </a>
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
                 <div class="col-12 col-md-6">
@@ -100,8 +103,9 @@
                                     <option value="COMPLETADA">Completada</option>
                                 </select>
                             </div>
-                            <button class="btn btn-primary"  id="update-button">
-                                Cambiar Estado
+                            <button class="btn btn-primary d-flex gap-1"  id="update-button">
+                                <span class="d-none d-md-block">Cambiar Estado</span>
+                                <i class="bi bi-arrow-left-right"></i>
                             </button>
                             <button class="btn btn-outline-danger" type="button" id="delete-button">
                                 <i class="bi bi-trash"></i>
